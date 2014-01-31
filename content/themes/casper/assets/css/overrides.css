@@ -1,0 +1,5 @@
+.post-content pre code {
+    overflow: auto;
+    word-break: break-all;
+    white-space: pre;
+}

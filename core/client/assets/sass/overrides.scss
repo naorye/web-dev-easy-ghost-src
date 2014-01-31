@@ -1,0 +1,7 @@
+.entry-preview-content, .content-preview-content {
+	pre code {
+	    overflow: auto;
+	    word-break: break-all;
+	    white-space: pre;
+	}
+}

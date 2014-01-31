@@ -29,6 +29,8 @@
 
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,700">
     <link rel="stylesheet" href="{{asset "css/screen.css" ghost="true"}}">
+    <link rel="stylesheet" type="text/css" href="http://yandex.st/highlightjs/7.4/styles/monokai_sublime.min.css" />
+
     {{{block "pageStyles"}}}
 </head>
     <body class="{{bodyClass}}{{updateNotification classOnly="true"}}">
@@ -53,5 +55,28 @@
     {{{ghostScriptTags}}}
 
     {{{block "bodyScripts"}}}
+
+
+    {{! Code highlighting with highlight.js }}
+    <script src="http://yandex.st/highlightjs/7.4/highlight.min.js"></script>
+    <script>
+        function highlightCode() {
+            $('pre code').each(function(i, e) {
+                hljs.highlightBlock(e);
+            });
+        }
+
+        // For editor preview
+        var timeoutId = setTimeout(highlightCode, 2000);
+        $('.entry-markdown-content').keyup(function(event) {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(highlightCode, 2000);
+        });
+
+        // For content list preview
+        setTimeout(function() {
+            $('.content-list-content').click(highlightCode);
+        }, 2000);
+    </script>
 </body>
 </html>
