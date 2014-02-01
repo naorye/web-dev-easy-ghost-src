@@ -675,6 +675,8 @@ registerHelpers = function (adminHbs, assetHash) {
     registerAdminHelper('adminUrl', coreHelpers.adminUrl);
 
     registerAsyncAdminHelper('updateNotification', coreHelpers.updateNotification);
+
+    require('./custom-helpers')();
 };
 
 module.exports = coreHelpers;
