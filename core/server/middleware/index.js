@@ -198,6 +198,7 @@ function checkSSL(req, res, next) {
 module.exports = function (server, dbHash) {
     var subdir = config.paths().subdir,
         corePath = config.paths().corePath,
+        appRoot = config.paths().appRoot,
         cookie;
 
     // Cache express server instance
@@ -220,6 +221,7 @@ module.exports = function (server, dbHash) {
 
     // Static assets
     expressServer.use(subdir + '/shared', express['static'](path.join(corePath, '/shared'), {maxAge: ONE_HOUR_MS}));
+    expressServer.use(subdir + '/code', express['static'](path.join(appRoot, '/code'), {maxAge: ONE_HOUR_MS}));
     expressServer.use(subdir + '/content/images', storage.get_storage().serve());
     expressServer.use(subdir + '/ghost/scripts', express['static'](path.join(corePath, '/built/scripts'), {maxAge: ONE_YEAR_MS}));
 
