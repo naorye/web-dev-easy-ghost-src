@@ -1,0 +1,28 @@
+<div id="spot-im-root"></div>
+<script type="text/javascript">
+    if (!spotName) { return; }
+    (function (options, document, base, mobileBase, script) {
+        options.base = base;
+        options.mobileBase = mobileBase;
+        options.spotName = spotName;
+        options.type = 'floating';
+        options.position = 'bottom_right';
+        options.size = 'large';
+        options.containerId = 'spot-im-root';
+
+        function downloadJSAtOnload() {
+            var element = document.createElement('script');
+            element.type = 'text/javascript';
+            element.async = true;
+            element.src = options.base + '/scripts/' + script;
+            document.body.appendChild(element);
+        }
+        if (window.addEventListener) {
+            window.addEventListener('load', downloadJSAtOnload, false);
+        } else if (window.attachEvent) {
+            window.attachEvent('onload', downloadJSAtOnload);
+        } else {
+            window.onload = downloadJSAtOnload;
+        }
+    }(window.SPOTIM = {}, document, 'http://embed.spot.im', 'http://membed.spot.im', 'launcher.js'));
+</script>
