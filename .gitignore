@@ -23,10 +23,6 @@ projectFilesBackup
 *.swp
 *.swo
 
-# Ghost DB file
-*.db
-*.db-journal
-
 .build
 .dist
 
